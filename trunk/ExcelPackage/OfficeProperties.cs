@@ -110,7 +110,7 @@ namespace OfficeOpenXml
                         _package.Package.Flush();
 
                         // create the relationship between the workbook and the new shared strings part
-                        _package.Package.CreateRelationship(PackUriHelper.GetRelativeUri(new Uri("/xl", UriKind.Relative), _uriPropertiesCore), TargetMode.Internal, @"http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties");
+                        _package.Package.CreateRelationship(PackUriHelper.GetRelativeUri(_uriPropertiesCore, new Uri("/xl", UriKind.Relative)), TargetMode.Internal, @"http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties");
                         _package.Package.Flush();
                     }
                 }
@@ -240,7 +240,7 @@ namespace OfficeOpenXml
                         _package.Package.Flush();
 
                         // create the relationship between the workbook and the new shared strings part
-                        _package.Package.CreateRelationship(PackUriHelper.GetRelativeUri(new Uri("/xl", UriKind.Relative), _uriPropertiesExtended), TargetMode.Internal, @"http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties");
+                        _package.Package.CreateRelationship(PackUriHelper.GetRelativeUri(_uriPropertiesExtended, new Uri("/xl", UriKind.Relative)), TargetMode.Internal, @"http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties");
                         _package.Package.Flush();
                     }
                 }
@@ -343,7 +343,7 @@ namespace OfficeOpenXml
                         _package.Package.Flush();
 
                         // create the relationship between the workbook and the new shared strings part
-                        _package.Package.CreateRelationship(PackUriHelper.GetRelativeUri(new Uri("/xl", UriKind.Relative), _uriPropertiesCustom), TargetMode.Internal, @"http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties");
+                        _package.Package.CreateRelationship(PackUriHelper.GetRelativeUri(_uriPropertiesCustom, new Uri("/xl", UriKind.Relative)), TargetMode.Internal, @"http://schemas.openxmlformats.org/officeDocument/2006/relationships/custom-properties");
                         _package.Package.Flush();
                     }
                 }

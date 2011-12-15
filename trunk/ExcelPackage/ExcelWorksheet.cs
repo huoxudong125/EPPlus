@@ -1934,7 +1934,7 @@ namespace OfficeOpenXml
                     if(_comments.Part==null)
                     {
                         _comments.Part = xlPackage.Package.CreatePart(_comments.Uri, "application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml", xlPackage.Compression);
-                        var rel = Part.CreateRelationship(PackUriHelper.GetRelativeUri(WorksheetUri, _comments.Uri), TargetMode.Internal, ExcelPackage.schemaRelationships+"/comments");
+                        var rel = Part.CreateRelationship(PackUriHelper.GetRelativeUri(_comments.Uri, WorksheetUri), TargetMode.Internal, ExcelPackage.schemaRelationships+"/comments");
                     }
                     _comments.CommentXml.Save(_comments.Part.GetStream());
                 }
@@ -1959,7 +1959,7 @@ namespace OfficeOpenXml
                     if (_vmlDrawings.Part == null)
                     {
                         _vmlDrawings.Part = xlPackage.Package.CreatePart(_vmlDrawings.Uri, "application/vnd.openxmlformats-officedocument.vmlDrawing", xlPackage.Compression);
-                        var rel = Part.CreateRelationship(PackUriHelper.GetRelativeUri(WorksheetUri, _vmlDrawings.Uri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/vmlDrawing");
+                        var rel = Part.CreateRelationship(PackUriHelper.GetRelativeUri(_vmlDrawings.Uri, WorksheetUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/vmlDrawing");
                         SetXmlNodeString("d:legacyDrawing/@r:id", rel.Id);
                         _vmlDrawings.RelId = rel.Id;
                     }
@@ -2035,7 +2035,7 @@ namespace OfficeOpenXml
                     tbl.Part = xlPackage.Package.CreatePart(tbl.TableUri, "application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml", Workbook._package.Compression);
                     var stream = tbl.Part.GetStream(FileMode.Create);
                     tbl.TableXml.Save(stream);
-                    var rel = Part.CreateRelationship(PackUriHelper.GetRelativeUri(WorksheetUri, tbl.TableUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/table");
+                    var rel = Part.CreateRelationship(PackUriHelper.GetRelativeUri(tbl.TableUri, WorksheetUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/table");
                     tbl.RelationshipID = rel.Id;
 
                     CreateNode("d:tableParts");

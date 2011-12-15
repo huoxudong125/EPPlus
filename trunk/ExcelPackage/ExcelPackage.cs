@@ -458,7 +458,7 @@ namespace OfficeOpenXml
             XmlDocument workbook = Workbook.WorkbookXml; // this will create the workbook xml in the package
 
             //// create the relationship to the main part
-            _package.CreateRelationship(PackUriHelper.GetRelativeUri(new Uri("/xl", UriKind.Relative), Workbook.WorkbookUri) /*ExcelPackage.FixUriForCreate(Workbook.WorkbookUri)*/, TargetMode.Internal, schemaRelationships + "/officeDocument");
+            _package.CreateRelationship(PackUriHelper.GetRelativeUri(Workbook.WorkbookUri, new Uri("/xl", UriKind.Relative)) /*ExcelPackage.FixUriForCreate(Workbook.WorkbookUri)*/, TargetMode.Internal, schemaRelationships + "/officeDocument");
             
             // remove the temporary part that created the default xml content type
             _package.DeletePart(uriDefaultContentType);

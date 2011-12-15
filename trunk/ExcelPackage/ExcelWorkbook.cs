@@ -409,7 +409,7 @@ namespace OfficeOpenXml
 						_package.Package.Flush();
 
 						// create the relationship between the workbook and the new shared strings part
-						Part.CreateRelationship(PackUriHelper.GetRelativeUri(_uriWorkbook,SharedStringsUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/sharedStrings");
+						Part.CreateRelationship(PackUriHelper.GetRelativeUri(SharedStringsUri, _uriWorkbook), TargetMode.Internal, ExcelPackage.schemaRelationships + "/sharedStrings");
 						_package.Package.Flush();
 					}
 				}
@@ -524,7 +524,7 @@ namespace OfficeOpenXml
 						_package.Package.Flush();
 
 						// create the relationship between the workbook and the new shared strings part
-						_package.Workbook.Part.CreateRelationship(PackUriHelper.GetRelativeUri(_uriWorkbook,StylesUri), TargetMode.Internal, ExcelPackage.schemaRelationships + "/styles");
+						_package.Workbook.Part.CreateRelationship(PackUriHelper.GetRelativeUri(StylesUri, _uriWorkbook), TargetMode.Internal, ExcelPackage.schemaRelationships + "/styles");
 						_package.Package.Flush();
 					}
 				}
