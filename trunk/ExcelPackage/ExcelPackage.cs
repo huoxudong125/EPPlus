@@ -568,7 +568,7 @@ namespace OfficeOpenXml
 		/// </summary>
 		public void Dispose()
 		{
-			_package.Close();
+			_package.Flush();
 		}
 		#endregion
 
@@ -585,7 +585,7 @@ namespace OfficeOpenXml
                 Workbook.Save();
                 if (File == null)
                 {
-                    _package.Close();
+                    _package.Flush();
                 }
                 else
                 {
@@ -602,7 +602,7 @@ namespace OfficeOpenXml
                     }
                     if (Stream is MemoryStream)
                     {
-                        _package.Close();
+                        _package.Flush();
                         var fi = new FileStream(File.FullName, FileMode.Create);
                         //EncryptPackage
                         if (Encryption.IsEncrypted)
@@ -806,7 +806,7 @@ namespace OfficeOpenXml
         internal byte[] GetAsByteArray(bool save)
         {
             if(save) Workbook.Save();
-            _package.Close();
+            _package.Flush();
 
             Byte[] byRet = new byte[Stream.Length];
             long pos = Stream.Position;            
@@ -853,7 +853,7 @@ namespace OfficeOpenXml
             //Release some resources:
             if (this._package != null)
             {
-                this._package.Close();
+                this._package.Flush();
                 this._package = null;
             }
             if (this._stream != null)
